@@ -32,3 +32,28 @@ $ ./pipeline.sh
 ```
 
 This will create a `tiles.mbtiles` file which is used by the web server.
+
+## Web server for serving tiles and some API endpoints
+
+The web server is a simple express server with some endpoints serving static JSON (for the API responses)
+and protobuf-based vector tiles out of the `tiles.mbtiles` file that is generated from the data pipeline.
+
+**To start the web server** run `index.js`:
+
+```js
+$ node index.js
+```
+
+The output of `index.js` will include the API address.
+
+To use this tile server with Civic's `BaseMap`, set the low-level `mapGlOptions` to override theme and
+API urls:
+
+```jsx
+<BaseMap
+  mapGLOptions={{
+    mapboxApiUrl: "http://localhost:3456/tiles",
+    mapStyle: "mapbox://styles/disaster"
+  }}
+/>
+```

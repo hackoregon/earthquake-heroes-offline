@@ -4,6 +4,7 @@ node_js:
 services:
   - docker
 install:
+  - npm i -g tl @mapbox/mbtiles tilelive-http
   - npm i
 before_script: bash pipeline.sh
 script: npm test

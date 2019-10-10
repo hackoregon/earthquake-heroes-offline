@@ -4,7 +4,7 @@
   "description": "This repo has three things.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +13,21 @@
     "@mapbox/mbtiles": "^0.11.0",
     "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "ava": {
+    "files": [
+      "index.test.js"
+    ],
+    "sources": [
+      "index.js"
+    ],
+    "cache": true,
+    "concurrency": 5,
+    "failFast": false,
+    "tap": true
+  },
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "supertest": "^4.0.2"
   }
 }

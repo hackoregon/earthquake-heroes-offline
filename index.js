@@ -72,3 +72,5 @@ console.log("Starting API and Tile Server\n");
 console.log(`Use this as your mapboxApiUrl: http://localhost:3456/tiles`);
 
 app.listen(3456);
+
+module.exports = app;

@@ -1,4 +1,4 @@
-NAME = "2019-earthquake-heroes-offline"
+NAME="2019-earthquake-heroes-offline"
 
 echo "Setting up AWS"
 

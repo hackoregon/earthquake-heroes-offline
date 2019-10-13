@@ -3,6 +3,9 @@ node_js:
   - lts/*
 services:
   - docker
+cache:
+  directories:
+    - ./tiles
 install:
   - npm i -g tl @mapbox/mbtiles tilelive-http
   - npm i
@@ -10,6 +13,6 @@ before_script: bash pipeline.sh
 script: npm test
 deploy:
   provider: script
-  script: bash deploy.sh
+  script: bash pipeline.sh && bash deploy.sh
   on:
     branch: master

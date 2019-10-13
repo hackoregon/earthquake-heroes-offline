@@ -10,7 +10,10 @@ app.use(cors());
 
 app.get("/tiles/:version/tiles/:z/:x/:y.pbf", function(req, res) {
   const { z, x, y } = req.params;
-  new MBTiles(path.join(__dirname, "tiles.mbtiles"), function(err, mbtiles) {
+  new MBTiles(path.join(__dirname, "tiles", "tiles.mbtiles"), function(
+    err,
+    mbtiles
+  ) {
     if (err) {
       res.header("Content-Type", "text/plain");
       res.status(500).send(`Tile error: ${err}`);
@@ -33,7 +36,7 @@ const themeHandler = function(req, res) {
   if (!theme.endsWith(".json")) {
     theme = theme + ".json";
   }
-  const filePath = path.join(__dirname, `themes/${theme}`);
+  const filePath = path.join(__dirname, "themes", theme);
   fs.readFile(filePath, "utf8", function(err, file) {
     if (err) {
       res.status(500);
@@ -57,7 +60,9 @@ app.get("/tiles/styles/:version/:theme/sprite.json", function(req, res) {
 });
 
 app.get("/tiles/styles/:version/:theme/sprite.png", function(req, res) {
-  const reader = fs.createReadStream(path.join(__dirname, "themes/sprite.png"));
+  const reader = fs.createReadStream(
+    path.join(__dirname, "themes", "sprite.png")
+  );
   reader.on("open", () => {
     res.header("Content-Type", "image/png");
     reader.pipe(res);

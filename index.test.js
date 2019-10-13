@@ -51,7 +51,7 @@ test("map tiles are served appropriately out of the mbtiles archive", async t =>
 // Promise-based helper to read a tile out of an mbtiles archive
 function getTile(z, x, y) {
   return new Promise((resolve, reject) => {
-    new MBTiles("./tiles.mbtiles", (err, mbtiles) => {
+    new MBTiles("./tiles/tiles.mbtiles", (err, mbtiles) => {
       if (err) {
         reject(500);
       } else {

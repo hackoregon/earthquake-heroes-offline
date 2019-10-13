@@ -4,7 +4,7 @@ WORKDIR /usr/src/server
 
 COPY package*.json ./
 COPY index.js ./
-COPY tiles.mbtiles ./
+COPY tiles tiles
 COPY themes themes
 
 RUN npm install --production

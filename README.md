@@ -1,5 +1,7 @@
 # Earthquake Heroes Offline
 
+[![Build Status](https://travis-ci.org/hackoregon/earthquake-heroes-offline.svg?branch=master)](https://travis-ci.org/hackoregon/earthquake-heroes-offline)
+
 This repo has three things.
 
 1. A data pipeline for generating offline map tiles

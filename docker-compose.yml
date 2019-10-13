@@ -1,0 +1,14 @@
+version: '3'
+services:
+  server:
+    image: $AWS_REGISTRY/production/2019-earthquake-heroes-offline:latest
+    ports:
+      - "3456:3456"
+  game:
+    image: $AWS_REGISTRY/production/civic-2019-disaster-game:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - "TILESERVER=http://localhost:3456/tiles"
+    depends_on:
+      - server

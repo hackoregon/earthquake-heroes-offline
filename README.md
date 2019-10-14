@@ -59,3 +59,29 @@ API urls:
   }}
 />
 ```
+
+## Bundling script for the offline server and game
+
+This is handled with [docker-compose](https://docs.docker.com/compose/).
+
+Both this repo and the [Civic repo](https://github.com/hackoregon/civic) continuously deliver docker images to Hack Oregon's Elastic Container Registry. The `docker-compose.yml` file in this repo references those images by name, but expects you to provide the registry url.
+
+## Distribution script for the offline server and game
+
+To make it as easy as possible to get and start the docker images, the `get-game.sh` script is available on S3. Running the latest build of the game and web server takes three steps:
+
+1. Download the script
+
+```sh
+$ curl -sO https://hacko-cdn.s3-us-west-2.amazonaws.com/earthquake-heroes/get-game.sh
+```
+
+2. Edit the script to provide values for the AWS environment variables. If you are meant to run the game, you'll have credentials.
+
+3. Run the script
+
+```sh
+$ bash get-game.sh
+```
+
+**:warning: Note! This script requires Docker and the AWS CLI to be installed already.**

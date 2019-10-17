@@ -68,6 +68,8 @@ Both this repo and the [Civic repo](https://github.com/hackoregon/civic) continu
 
 ## Distribution script for the offline server and game
 
+### MacOS & Linux
+
 To make it as easy as possible to get and start the docker images, the `get-game.sh` script is available on S3. Running the latest build of the game and web server takes three steps:
 
 1. Download the script
@@ -84,4 +86,23 @@ $ curl -sO https://hacko-cdn.s3-us-west-2.amazonaws.com/earthquake-heroes/get-ga
 $ bash get-game.sh
 ```
 
-**:warning: Note! This script requires Docker and the AWS CLI to be installed already.**
+### Windows
+
+To make it as easy as possible to get and start the docker images, the `get-game.ps1` powershell script is available on S3. Running the latest build of the game and web server takes three steps:
+
+1. Download the script
+
+```powershell
+PS:\> curl -Uri https://hacko-cdn.s3-us-west-2.amazonaws.com/earthquake-heroes/get-game.ps1 -OutFile get-game.ps1
+```
+
+2. Edit the script to provide values for the AWS environment variables. If you are meant to run the game, you'll have credentials.
+
+3. Run the script
+
+```powershell
+PS:\> & .\get-game.ps1
+```
+
+
+**:warning: Note! These scripts require Docker and the AWS CLI to be installed already.**

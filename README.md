@@ -105,4 +105,4 @@ PS:\> & .\get-game.ps1
 ```
 
 
-**:warning: Note! These scripts require Docker and the AWS CLI to be installed already.**
+**:warning: Note! These scripts require Docker, Git and the AWS CLI to be installed already.**

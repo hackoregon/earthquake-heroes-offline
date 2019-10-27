@@ -8,9 +8,9 @@ const app = express();
 
 app.use(cors());
 
-app.get("/tiles/:version/tiles/:z/:x/:y.pbf", function(req, res) {
+app.get("/tiles/:version/tiles/:z/:x/:y.pbf", function (req, res) {
   const { z, x, y } = req.params;
-  new MBTiles(path.join(__dirname, "tiles", "tiles.mbtiles"), function(
+  new MBTiles(path.join(__dirname, "tiles", "tiles.mbtiles"), function (
     err,
     mbtiles
   ) {
@@ -18,7 +18,7 @@ app.get("/tiles/:version/tiles/:z/:x/:y.pbf", function(req, res) {
       res.header("Content-Type", "text/plain");
       res.status(500).send(`Tile error: ${err}`);
     } else {
-      mbtiles.getTile(z, x, y, function(err, tile, headers) {
+      mbtiles.getTile(z, x, y, function (err, tile, headers) {
         if (err) {
           res.header("Content-Type", "text/plain");
           res.status(404).send(`Tile error ${err}`);
@@ -31,13 +31,13 @@ app.get("/tiles/:version/tiles/:z/:x/:y.pbf", function(req, res) {
   });
 });
 
-const themeHandler = function(req, res) {
+const themeHandler = function (req, res) {
   let theme = req.params.theme;
   if (!theme.endsWith(".json")) {
     theme = theme + ".json";
   }
   const filePath = path.join(__dirname, "themes", theme);
-  fs.readFile(filePath, "utf8", function(err, file) {
+  fs.readFile(filePath, "utf8", function (err, file) {
     if (err) {
       res.status(500);
       res.json({ status: 500, message: `Could not load theme: ${err}` });
@@ -55,11 +55,11 @@ const themeHandler = function(req, res) {
 app.get("/tiles/styles/:version/:theme", themeHandler);
 app.get("/tiles/:version/:theme", themeHandler);
 
-app.get("/tiles/styles/:version/:theme/sprite.json", function(req, res) {
+app.get(["/tiles/styles/:version/:theme/sprite.json", "/tiles/styles/:version/:theme/sprite@2x.json"], function (req, res) {
   res.json({});
 });
 
-app.get("/tiles/styles/:version/:theme/sprite.png", function(req, res) {
+app.get(["/tiles/styles/:version/:theme/sprite.png", "/tiles/styles/:version/:theme/sprite@2x.png"], function (req, res) {
   const reader = fs.createReadStream(
     path.join(__dirname, "themes", "sprite.png")
   );

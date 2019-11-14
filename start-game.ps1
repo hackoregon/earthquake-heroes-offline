@@ -10,5 +10,5 @@ Set-Location -Path earthquake-heroes
 # Authenticate with ECR
 Invoke-Expression -Command (aws ecr get-login --no-include-email --region us-west-2)
 
-# Get the docker images
-docker-compose pull
+# Start the tile server and the game!
+docker-compose up

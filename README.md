@@ -90,19 +90,25 @@ $ bash get-game.sh
 
 To make it as easy as possible to get and start the docker images, the `get-game.ps1` powershell script is available on S3. Running the latest build of the game and web server takes three steps:
 
-1. Download the script
+1. Download the scripts
 
 ```powershell
 PS:\> curl -Uri https://hacko-cdn.s3-us-west-2.amazonaws.com/earthquake-heroes/get-game.ps1 -OutFile get-game.ps1
+PS:\> curl -Uri https://hacko-cdn.s3-us-west-2.amazonaws.com/earthquake-heroes/start-game.ps1 -OutFile start-game.ps1
 ```
 
 2. Edit the script to provide values for the AWS environment variables. If you are meant to run the game, you'll have credentials.
 
-3. Run the script
+3. Run the get-game script to pull docker containers
 
 ```powershell
 PS:\> & .\get-game.ps1
 ```
 
+4. Run the start-game script to run the tileserver and the game!
+
+```powershell
+PS:\> & .\start-game.ps1
+```
 
 **:warning: Note! These scripts require Docker, Git and the AWS CLI to be installed already.**
